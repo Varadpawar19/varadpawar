@@ -1,10 +1,8 @@
-/* Reset some default browser styles */
 body, h1, h2, p, ul, li {
     margin: 0;
     padding: 0;
 }
 
-/* Global Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -20,7 +18,7 @@ header {
 
 header h1 {
     font-size: 28px;
-    margin-bottom: 10px;
+    margin-right: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     animation: fadeInUp 1s ease-in-out;
 }
@@ -56,20 +54,6 @@ section {
     animation: fadeIn 1s ease-in-out;
 }
 
-footer {
-    text-align: center;
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-    animation: fadeInUp 1s ease-in-out;
-}
-
-/* Specific Page Styles */
-/* Add specific styles for each page (e.g., #about, #skills, #contact) */
-
-/* Add more styles as needed */
-
-/* Keyframes for Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -89,9 +73,6 @@ footer {
         transform: translateY(0);
     }
 }
-/* ... (Previous CSS styles) */
-
-/* Navigation Menu Styles */
 nav ul {
     list-style: none;
     animation: fadeIn 1s ease-in-out; /* Add fade-in animation to the entire list */
@@ -111,13 +92,6 @@ nav ul li a {
     transition: color 0.3s ease-in-out;
 }
 
-nav ul li a:hover {
-    color: #ff6600;
-}
-
-/* ... (Rest of your CSS) */
-
-/* Keyframes for Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -128,7 +102,6 @@ nav ul li a:hover {
         transform: translateY(0);
     }
 }
-/* ... (Previous CSS styles) */
 
 /* Navigation Menu Styles */
 nav ul {
@@ -150,31 +123,29 @@ nav ul li a {
     transition: color 0.3s ease-in-out;
 }
 
-/* Styles for Font Awesome Icons */
-/* Adjust the size and color of the icons */
+
 nav ul li a i {
-    font-size: 15px; /* Adjust the size as needed */
-    margin-right: 5px; /* Add some spacing between the icon and text */
-    vertical-align: middle; /* Center the icon vertically with the text */
+    font-size: 15px; 
+    margin-right: 5px; 
+    vertical-align: middle;
 }
 
-/* Styles for Specific Icons */
-/* You can use class names for specific icons and customize them individually */
 nav ul li a .fas.fa-user { /* Styles for the user icon */
-    color: #ff6600; /* Change the color as needed */
+    color: #ff6600; 
 }
 
 nav ul li a .fas.fa-code { /* Styles for the code icon */
-    color: #33cc33; /* Change the color as needed */
+    color: #33cc33; 
 }
 
 nav ul li a .fas.fa-envelope { /* Styles for the envelope icon */
-    color: #0099cc; /* Change the color as needed */
+    color: #0099cc; 
 }
 
-/* ... (Rest of your CSS) */
+nav ul li a .fas.fa-project-diagram { /* Styles for the envelope icon */
+    color: #ccb800; 
+}
 
-/* Keyframes for Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -186,4 +157,31 @@ nav ul li a .fas.fa-envelope { /* Styles for the envelope icon */
     }
 }
 
+html {
+    height: 100%;
+}
 
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f0f0f0; 
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    position: bottom;
+    bottom: 0;
+    width: 100%;
+    animation: fadeInUp 1s ease-in-out;
+}
