@@ -1,0 +1,802 @@
+<title>Varad Pawar | Portfolio</title>
+
+<link rel="icon" type=""image/svg+xml"  href="https://i.ibb.co/27Jn24wj/simple.jpg">
+<style>
+  
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Outfit:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+/* ===== THEMES ===== */
+body[data-theme="light"]{
+  --bg:#f4f4f0;--surface:#ffffff;--surface2:#f9f9f7;
+  --border:#e2e2de;--border2:#ccccc8;
+  --text:#111110;--muted:#6a6a72;--muted2:#9a9aa3;
+  --accent:#10b981;--accent-bg:rgba(16,185,129,.1);--accent-border:rgba(16,185,129,.25);
+  --pill:#eeeeea;--pill-border:#dcdcd8;
+  --nav-bg:rgba(244,244,240,.9);--card-hover:#f0f0ec;
+  --dot:#c4c4c0;--sidebar-border:#e2e2de;
+}
+body[data-theme="dark"]{
+  --bg:#0a0a0b;--surface:#111113;--surface2:#16161a;
+  --border:#27272a;--border2:#3f3f46;
+  --text:#fafafa;--muted:#71717a;--muted2:#52525b;
+  --accent:#10b981;--accent-bg:rgba(16,185,129,.1);--accent-border:rgba(16,185,129,.25);
+  --pill:#1c1c1f;--pill-border:#2e2e32;
+  --nav-bg:rgba(10,10,11,.9);--card-hover:#1a1a1e;
+  --dot:#2a2a2e;--sidebar-border:#1f1f23;
+}
+body[data-theme="purple"]{
+  --bg:#0d0b14;--surface:#13101e;--surface2:#17142a;
+  --border:#2a2440;--border2:#3d3560;
+  --text:#f0eeff;--muted:#8b82b0;--muted2:#5e5780;
+  --accent:#a78bfa;--accent-bg:rgba(167,139,250,.1);--accent-border:rgba(167,139,250,.3);
+  --pill:#1a1628;--pill-border:#2d2548;
+  --nav-bg:rgba(13,11,20,.92);--card-hover:#1d1930;
+  --dot:#221e38;--sidebar-border:#1e1a30;
+}
+body[data-theme="ocean"]{
+  --bg:#031220;--surface:#061c30;--surface2:#082540;
+  --border:#0e3050;--border2:#164060;
+  --text:#e8f4ff;--muted:#6a94b8;--muted2:#3a6480;
+  --accent:#06b6d4;--accent-bg:rgba(6,182,212,.1);--accent-border:rgba(6,182,212,.3);
+  --pill:#082030;--pill-border:#0f3048;
+  --nav-bg:rgba(3,18,32,.92);--card-hover:#0a2840;
+  --dot:#0e2a40;--sidebar-border:#0a2030;
+}
+body[data-theme="rose"]{
+  --bg:#0f0a0c;--surface:#17100e;--surface2:#1d1410;
+  --border:#2e1c1a;--border2:#452e2a;
+  --text:#fff0ee;--muted:#b08088;--muted2:#7a5555;
+  --accent:#f43f5e;--accent-bg:rgba(244,63,94,.1);--accent-border:rgba(244,63,94,.3);
+  --pill:#1e1210;--pill-border:#301e1c;
+  --nav-bg:rgba(15,10,12,.92);--card-hover:#201510;
+  --dot:#2a1818;--sidebar-border:#241210;
+}
+
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'Outfit',system-ui,sans-serif;
+  min-height:100vh;
+  transition:background .4s,color .4s;
+}
+.dot-grid{
+  background-image:radial-gradient(circle,var(--dot) 1px,transparent 1px);
+  background-size:26px 26px;
+}
+
+/* ===== NAV ===== */
+.nav{
+  background:var(--nav-bg);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:100;
+  height:52px;
+  display:flex;align-items:center;padding:0 24px;gap:2px;
+}
+.nav-logo-btn{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;color:#fff;
+  cursor:pointer;margin-right:10px;flex-shrink:0;
+  transition:opacity .2s;overflow:hidden;
+}
+.nav-logo-btn img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.nav-logo-btn:hover{opacity:.85;}
+.nav-link{
+  padding:5px 13px;border-radius:7px;
+  font-size:13px;font-weight:500;color:var(--muted);
+  cursor:pointer;border:none;background:none;
+  transition:.15s;font-family:'Outfit',sans-serif;
+}
+.nav-link:hover{color:var(--text);background:rgba(128,128,128,.08);}
+.nav-link.active{color:var(--text);background:rgba(128,128,128,.12);}
+.nav-spacer{flex:1;}
+.cmd-btn{
+  display:flex;align-items:center;gap:7px;
+  background:var(--surface);border:1px solid var(--border2);
+  border-radius:8px;padding:5px 11px;cursor:pointer;
+  transition:border-color .15s;
+}
+.cmd-btn:hover{border-color:var(--accent);}
+.cmd-btn span{font-size:11px;color:var(--muted);font-family:'Fira Code',monospace;}
+.cmd-kbd{font-size:9px;color:var(--muted2);background:rgba(128,128,128,.1);border:1px solid var(--border);border-radius:3px;padding:1px 4px;font-family:'Fira Code',monospace;}
+
+/* ===== THEME SWITCHER ===== */
+.theme-bar{
+  display:flex;align-items:center;gap:6px;margin-left:10px;
+  border-left:1px solid var(--border);padding-left:12px;
+}
+.theme-dot{
+  width:18px;height:18px;border-radius:50%;cursor:pointer;
+  border:2px solid transparent;transition:.2s;
+}
+.theme-dot:hover,.theme-dot.active{border-color:var(--text);transform:scale(1.15);}
+.td-light{background:#e8e8e4;}
+.td-dark{background:#18181b;}
+.td-purple{background:#a78bfa;}
+.td-ocean{background:#06b6d4;}
+.td-rose{background:#f43f5e;}
+
+/* ===== CMD PALETTE ===== */
+.cmd-overlay{
+  display:none;position:absolute;top:52px;left:0;right:0;
+  background:rgba(0,0,0,.5);z-index:200;
+  align-items:flex-start;justify-content:center;
+  padding-top:40px;min-height:500px;
+}
+.cmd-overlay.open{display:flex;}
+.cmd-box{
+  background:var(--surface);border:1px solid var(--border2);
+  border-radius:14px;width:480px;overflow:hidden;
+}
+.cmd-in-row{display:flex;align-items:center;gap:9px;padding:13px 15px;border-bottom:1px solid var(--border);}
+.cmd-in{flex:1;border:none;outline:none;font-size:14px;font-family:'Outfit',sans-serif;background:transparent;color:var(--text);}
+.cmd-in::placeholder{color:var(--muted);}
+.cmd-results{padding:5px;}
+.cmd-item{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:7px;cursor:pointer;font-size:13px;color:var(--muted);transition:.12s;}
+.cmd-item:hover{background:var(--accent-bg);color:var(--accent);}
+.cmd-foot{padding:8px 15px;border-top:1px solid var(--border);display:flex;gap:12px;}
+.cmd-foot span{font-size:10px;color:var(--muted2);}
+.cmd-foot kbd{background:rgba(128,128,128,.1);border:1px solid var(--border);border-radius:3px;padding:1px 4px;font-size:9px;font-family:'Fira Code',monospace;color:var(--muted);}
+
+/* ===== MAIN LAYOUT ===== */
+.layout{
+  max-width:1100px;margin:0 auto;padding:44px 24px 80px;
+  display:grid;grid-template-columns:280px 1fr;gap:28px;
+  align-items:start;
+}
+/* sidebar sticky */
+.sidebar{
+  position:sticky;top:64px;
+  display:flex;flex-direction:column;gap:0;
+}
+.sidebar-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;padding:24px;
+}
+.avatar-wrap{position:relative;margin-bottom:18px;}
+.avatar-img{
+  width:72px;height:72px;border-radius:50%;
+  background:var(--accent-bg);border:2px solid var(--accent-border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;font-weight:700;color:var(--accent);
+  overflow:hidden;
+}
+.avatar-img img{width:100%;height:100%;object-fit:cover;}
+.avail-dot{
+  position:absolute;bottom:2px;right:2px;
+  width:13px;height:13px;background:var(--accent);
+  border:2.5px solid var(--surface);border-radius:50%;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 40%,transparent)}50%{box-shadow:0 0 0 6px transparent}}
+.sb-name{font-size:18px;font-weight:700;letter-spacing:-.02em;margin-bottom:3px;}
+.sb-role{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:16px;}
+.sb-avail{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11px;font-family:'Fira Code',monospace;color:var(--accent);
+  background:var(--accent-bg);border:1px solid var(--accent-border);
+  border-radius:100px;padding:4px 10px;margin-bottom:18px;
+}
+.sb-avail-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite;}
+.sb-divider{border:none;border-top:1px solid var(--border);margin:16px 0;}
+.sb-section-label{font-size:10px;color:var(--muted2);font-family:'Fira Code',monospace;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;}
+.sb-link{
+  display:flex;align-items:center;gap:8px;
+  padding:7px 9px;border-radius:8px;
+  font-size:12px;color:var(--muted);
+  cursor:pointer;transition:.15s;text-decoration:none;
+  font-weight:500;
+}
+.sb-link:hover{color:var(--text);background:rgba(128,128,128,.08);}
+.sb-link svg{flex-shrink:0;opacity:.6;}
+.sb-contact-btn{
+  width:100%;margin-top:14px;
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  background:var(--accent);color:#000;
+  font-size:12px;font-weight:600;
+  padding:9px;border-radius:9px;border:none;cursor:pointer;
+  transition:.2s;font-family:'Outfit',sans-serif;
+}
+.sb-contact-btn:hover{opacity:.85;}
+
+/* ===== MAIN CONTENT ===== */
+.main-content{min-width:0;}
+.section{display:none;}
+.section.active{display:block;}
+
+/* ===== HOME HERO ===== */
+.hero-section{margin-bottom:36px;}
+.hero-big{
+  font-size:clamp(30px,4.5vw,46px);font-weight:800;
+  letter-spacing:-.03em;line-height:1.08;
+  margin-bottom:20px;
+}
+.hero-big em{font-style:italic;font-family:'DM Serif Display',serif;color:var(--muted);}
+.hero-subtext{
+  font-size:16px;color:var(--muted);line-height:1.8;
+  margin-bottom:26px;
+}
+.inline-pill{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--surface);border:1px solid var(--border2);
+  border-radius:7px;padding:2px 9px;
+  font-size:13px;font-weight:500;color:var(--text);
+  vertical-align:middle;margin:0 2px;white-space:nowrap;
+  transition:.15s;
+}
+.inline-pill:hover{border-color:var(--accent);color:var(--accent);}
+.hero-actions{display:flex;gap:9px;margin-bottom:26px;flex-wrap:wrap;}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:6px;
+  background:transparent;border:1px solid var(--border2);
+  color:var(--muted);font-size:12px;font-weight:500;
+  padding:8px 16px;border-radius:8px;cursor:pointer;
+  transition:.2s;font-family:'Outfit',sans-serif;text-decoration:none;
+}
+.btn-outline:hover{border-color:var(--text);color:var(--text);}
+.btn-fill{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--text);border:1px solid var(--text);
+  color:var(--bg);font-size:12px;font-weight:600;
+  padding:8px 16px;border-radius:8px;cursor:pointer;
+  transition:.2s;font-family:'Outfit',sans-serif;text-decoration:none;
+}
+.btn-fill:hover{opacity:.8;}
+
+/* ===== BENTO GRID ===== */
+.bento{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+.bento-full{grid-column:span 2;}
+.bento-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:20px;
+  transition:border-color .2s,transform .2s;
+}
+.bento-card:hover{border-color:var(--border2);}
+.bento-label{font-size:10px;font-family:'Fira Code',monospace;color:var(--muted2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;}
+.bento-val{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-bottom:3px;}
+.bento-sub{font-size:12px;color:var(--muted);}
+.bento-accent{color:var(--accent);}
+
+/* ===== SPOTIFY ===== */
+.spotify-outer{margin-top:4px;}
+.spotify-lbl{font-size:10px;color:var(--accent);font-family:'Fira Code',monospace;display:flex;align-items:center;gap:6px;letter-spacing:.06em;margin-bottom:8px;}
+.s-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 1.5s infinite;}
+.spotify-card{
+  background:var(--text);color:var(--bg);
+  border-radius:12px;padding:13px 15px;
+  display:flex;align-items:center;gap:12px;
+}
+.s-art{width:44px;height:44px;border-radius:8px;background:#1a1a2e;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.s-info{flex:1;}
+.s-track{font-size:13px;font-weight:600;margin-bottom:1px;}
+.s-artist{font-size:11px;opacity:.6;}
+.s-prog{margin-top:8px;display:flex;align-items:center;gap:8px;}
+.s-bar{flex:1;height:2px;background:rgba(255,255,255,.2);border-radius:2px;overflow:hidden;}
+.s-fill{height:100%;background:#1db954;border-radius:2px;animation:prog 30s linear infinite;}
+@keyframes prog{from{width:35%}to{width:92%}}
+.s-time{font-size:9px;opacity:.5;font-family:'Fira Code',monospace;}
+.wave{display:flex;align-items:flex-end;gap:2px;height:16px;margin-left:8px;}
+.wb{width:3px;background:#1db954;border-radius:2px;animation:wv .7s ease-in-out infinite;}
+.wb:nth-child(1){animation-delay:0s}.wb:nth-child(2){animation-delay:.1s}.wb:nth-child(3){animation-delay:.2s}.wb:nth-child(4){animation-delay:.3s}.wb:nth-child(5){animation-delay:.15s}
+@keyframes wv{0%,100%{height:3px}50%{height:13px}}
+
+/* ===== SECTION HEADINGS ===== */
+.sec-eyebrow{font-size:10px;font-family:'Fira Code',monospace;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+.sec-h{font-size:24px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px;}
+.sec-sub{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:28px;}
+.divider{border:none;border-top:1px solid var(--border);margin:32px 0;}
+
+/* ===== WORK CARDS ===== */
+.work-list{display:flex;flex-direction:column;gap:10px;}
+.work-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:18px 20px;
+  display:flex;gap:14px;align-items:flex-start;
+  transition:.2s;cursor:default;
+}
+.work-card:hover{border-color:var(--border2);background:var(--card-hover);}
+.work-logo{width:40px;height:40px;border-radius:9px;background:var(--pill);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+.work-role{font-size:14px;font-weight:600;margin-bottom:2px;}
+.work-meta{font-size:11px;color:var(--muted);margin-bottom:8px;display:flex;gap:8px;flex-wrap:wrap;}
+.work-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:10px;}
+.tags{display:flex;flex-wrap:wrap;gap:5px;}
+.tag{font-size:10px;font-family:'Fira Code',monospace;color:var(--muted);background:var(--pill);border:1px solid var(--pill-border);border-radius:4px;padding:2px 7px;}
+
+/* ===== STACK ===== */
+.stack-block{margin-bottom:24px;}
+.stack-cat{font-size:10px;font-weight:600;color:var(--muted2);text-transform:uppercase;letter-spacing:.08em;font-family:'Fira Code',monospace;margin-bottom:10px;}
+.stack-pills{display:flex;flex-wrap:wrap;gap:7px;}
+.s-pill{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:7px;padding:6px 11px;
+  font-size:11px;font-weight:500;color:var(--text);
+  cursor:default;transition:.15s;
+}
+.s-pill:hover{border-color:var(--accent);color:var(--accent);}
+.s-pill-dot{width:5px;height:5px;background:var(--accent);border-radius:50%;}
+
+/* ===== PROJECTS ===== */
+.projects-list{display:flex;flex-direction:column;gap:10px;}
+.proj-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:20px;transition:.2s;
+}
+.proj-card:hover{border-color:var(--accent-border);transform:translateY(-1px);}
+.proj-header{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px;}
+.proj-name{font-size:15px;font-weight:700;}
+.proj-num{font-size:10px;font-family:'Fira Code',monospace;color:var(--muted2);}
+.proj-desc{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:12px;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
+.proj-tag{font-size:10px;font-family:'Fira Code',monospace;color:var(--accent);background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:4px;padding:2px 7px;}
+.proj-btns{display:flex;gap:8px;}
+.proj-btn{flex:1;text-align:center;font-size:11px;font-family:'Fira Code',monospace;padding:7px;border-radius:7px;cursor:pointer;border:none;font-weight:500;transition:.15s;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:5px;}
+.pb-code{background:var(--pill);color:var(--muted);border:1px solid var(--pill-border);}
+.pb-code:hover{color:var(--text);}
+.pb-live{background:var(--accent);color:#000;}
+.pb-live:hover{opacity:.85;}
+
+/* ===== EDUCATION ===== */
+.edu-list{display:flex;flex-direction:column;gap:10px;}
+.edu-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;display:flex;gap:14px;}
+.edu-logo{width:40px;height:40px;border-radius:9px;background:var(--pill);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+.edu-school{font-size:14px;font-weight:600;margin-bottom:2px;}
+.edu-degree{font-size:12px;color:var(--muted);margin-bottom:5px;}
+.edu-meta{font-size:11px;color:var(--muted2);}
+.edu-badge{font-size:10px;font-family:'Fira Code',monospace;color:var(--accent);background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:4px;padding:2px 7px;white-space:nowrap;align-self:flex-start;}
+
+/* ===== ABOUT ===== */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.about-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;}
+.about-card-t{font-size:13px;font-weight:600;margin-bottom:7px;}
+.about-card-txt{font-size:12px;color:var(--muted);line-height:1.65;}
+.achiev-row{display:flex;align-items:flex-start;gap:9px;padding:10px 0;border-bottom:1px solid var(--border);}
+.achiev-row:last-child{border-bottom:none;padding-bottom:0;}
+.achiev-dot{width:5px;height:5px;background:var(--accent);border-radius:50%;margin-top:5px;flex-shrink:0;}
+.achiev-txt{font-size:12px;color:var(--muted);line-height:1.55;}
+.achiev-txt strong{color:var(--text);}
+
+/* ===== FOOTER ===== */
+.footer{
+  text-align:center;
+  padding:20px 20px 15px;
+  margin-top:5px;
+}
+
+.footer p{
+  margin:2px 0;
+  font-size:10px;
+  color:var(--muted2);
+  font-weight:400;
+  line-height:1.5;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:740px){
+  .layout{grid-template-columns:1fr;padding:24px 16px 60px;}
+  .sidebar{position:static;}
+  .bento{grid-template-columns:1fr;}
+  .bento-full{grid-column:span 1;}
+  .about-grid{grid-template-columns:1fr;}
+  .hero-big{font-size:28px;}
+  .nav{padding:0 14px;}
+  .theme-bar{display:none;}
+}
+</style>
+
+<div style="position:relative;">
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo-btn" id="navLogoBtn" onclick="showSection('home')" title="Go home">VP</div>
+  <button class="nav-link active" id="nav-home" onclick="showSection('home')">Home</button>
+  <button class="nav-link" id="nav-work" onclick="showSection('work')">Work</button>
+  <button class="nav-link" id="nav-stack" onclick="showSection('stack')">Stack</button>
+  <button class="nav-link" id="nav-projects" onclick="showSection('projects')">Projects</button>
+  <button class="nav-link" id="nav-education" onclick="showSection('education')">Education</button>
+  <button class="nav-link" id="nav-about" onclick="showSection('about')">About</button>
+  <div class="nav-spacer"></div>
+  <div class="theme-bar">
+    <div class="theme-dot td-light active" id="td-light" onclick="setTheme('light')" title="Light"></div>
+    <div class="theme-dot td-dark" id="td-dark" onclick="setTheme('dark')" title="Dark"></div>
+    <div class="theme-dot td-purple" id="td-purple" onclick="setTheme('purple')" title="Purple"></div>
+    <div class="theme-dot td-ocean" id="td-ocean" onclick="setTheme('ocean')" title="Ocean"></div>
+    <div class="theme-dot td-rose" id="td-rose" onclick="setTheme('rose')" title="Rose"></div>
+  </div>
+  <div class="cmd-btn" onclick="openCmd()" style="margin-left:10px;">
+    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <span>Search</span>
+    <span class="cmd-kbd">⌘K</span>
+  </div>
+</nav>
+
+<!-- CMD OVERLAY -->
+<div class="cmd-overlay" id="cmdOverlay" onclick="if(event.target===this)closeCmd()">
+  <div class="cmd-box">
+    <div class="cmd-in-row">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input class="cmd-in" id="cmdInput" placeholder="Go to section or project..." />
+    </div>
+    <div class="cmd-results">
+      <div class="cmd-item" onclick="showSection('home');closeCmd()">🏠&ensp;Home</div>
+      <div class="cmd-item" onclick="showSection('work');closeCmd()">💼&ensp;Work Experience</div>
+      <div class="cmd-item" onclick="showSection('stack');closeCmd()">⚡&ensp;Tech Stack</div>
+      <div class="cmd-item" onclick="showSection('projects');closeCmd()">📁&ensp;Aegis-AI — AI Assistant</div>
+      <div class="cmd-item" onclick="showSection('projects');closeCmd()">📁&ensp;JusticeServe — Legal Platform</div>
+      <div class="cmd-item" onclick="showSection('projects');closeCmd()">📁&ensp;PawClub — E-Commerce</div>
+      <div class="cmd-item" onclick="showSection('education');closeCmd()">🎓&ensp;Education & Certs</div>
+      <div class="cmd-item" onclick="showSection('about');closeCmd()">🏆&ensp;Achievements & About</div>
+    </div>
+    <div class="cmd-foot">
+      <span><kbd>↑</kbd><kbd>↓</kbd> move</span>
+      <span><kbd>↵</kbd> select</span>
+      <span><kbd>ESC</kbd> close</span>
+    </div>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout dot-grid">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="avatar-wrap">
+        <div class="avatar-img" id="sidebarAvatar">
+  <img src="https://i.ibb.co/27Jn24wj/simple.jpg" alt="Varad">
+</div>
+        <div class="avail-dot"></div>
+      </div>
+      <div class="sb-name">Varad Pawar</div>
+      <div class="sb-role">Java Full Stack Intern @ Cognizant · Final Year CSBS · JSPM RSCOE, Pune</div>
+      <div class="sb-avail"><div class="sb-avail-dot"></div>Open to opportunities</div>
+
+      <hr class="sb-divider">
+      <div class="sb-section-label">Navigate</div>
+      <a class="sb-link" onclick="showSection('home')">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+      </a>
+      <a class="sb-link" onclick="showSection('work')">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        Work Experience
+      </a>
+      <a class="sb-link" onclick="showSection('stack')">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        Tech Stack
+      </a>
+      <a class="sb-link" onclick="showSection('projects')">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        Projects
+      </a>
+      <a class="sb-link" onclick="showSection('education')">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Education
+      </a>
+      <a class="sb-link" onclick="showSection('about')">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        About
+      </a>
+
+      <hr class="sb-divider">
+      <div class="sb-section-label">Connect</div>
+      <a class="sb-link" href="https://linkedin.com/in/varad-pawar-" target="_blank">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a class="sb-link" href="https://github.com/Varadpawar19" target="_blank">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a class="sb-link" href="mailto:vrpawar1910@gmail.com">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+      <button class="sb-contact-btn" onclick="showSection('about')">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Get in touch
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- HOME -->
+    <div class="section active" id="section-home">
+      <div class="hero-section">
+        <h1 class="hero-big">Hi, I'm Varad —<br><em>Software Development</em><br>Engineer.</h1>
+        <p class="hero-subtext">
+          I build scalable backend systems using
+          <span class="inline-pill">☕ Java</span>,
+          <span class="inline-pill">⚙️ Spring Boot</span>,
+          <span class="inline-pill">🔗 Microservices</span>,
+          <span class="inline-pill">◈ Angular</span>
+          and <span class="inline-pill">☁️ Azure</span>.
+          Focused on <strong>high performance, distributed</strong> architectures.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-outline" href="https://drive.google.com/file/d/1jYNTCsqJBvLAJu8s9C_DbJ2NrzyYGYbI/view?usp=sharing">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Resume / CV
+          </a>
+          <a class="btn-fill" href="mailto:vrpawar1910@gmail.com">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Get in touch
+          </a>
+        </div>
+      </div>
+
+      <!-- BENTO QUICK STATS -->
+      <div class="bento">
+        <div class="bento-card">
+          <div class="bento-label">Current Role</div>
+          <div class="bento-val" style="font-size:16px;color:var(--accent)">GenC Intern</div>
+          <div class="bento-sub">Cognizant Technology Solutions · Pune</div>
+        </div>
+        <div class="bento-card">
+          <div class="bento-label">Status</div>
+          <div class="bento-val bento-accent">✦ Available</div>
+          <div class="bento-sub">Open to Full-time · Part-time · Contracts</div>
+        </div>
+        <div class="bento-card">
+          <div class="bento-label">Graduating</div>
+          <div class="bento-val">2026</div>
+          <div class="bento-sub">B.Tech CSBS · JSPM RSCOE, Pune</div>
+        </div>
+        <div class="bento-card">
+          <div class="bento-label">Hackathons</div>
+          <div class="bento-val bento-accent">3+</div>
+          <div class="bento-sub">Participated in multiple industry hackathons</div>
+        </div>
+        <div class="bento-card bento-full">
+          <div class="bento-label">Top Achievement</div>
+          <div class="bento-val" style="font-size:16px;">🏆 Smart India Hackathon 2024 — National Finalist</div>
+          <div class="bento-sub" style="margin-top:4px">Ministry of Education, Govt. of India, NTRO · Selected from thousands of teams nationwide</div>
+        </div>
+      </div>
+
+      <!-- SPOTIFY -->
+<div class="spotify-outer">
+  <div class="spotify-lbl">
+    <div class="s-dot"></div>
+    CURRENT VIBES
+  </div>
+
+  <iframe 
+  data-testid="embed-iframe" 
+  style="border-radius:12px" 
+  src="https://open.spotify.com/embed/playlist/759gD1zxheoWbS1n8rI6w3?utm_source=generator" 
+  width="100%" 
+  height="152" 
+  frameBorder="0" 
+  allowfullscreen="" 
+  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+  loading="lazy">
+</iframe>
+</div>
+        <!-- <div class="spotify-lbl"><div class="s-dot"></div>LISTENING TO ...</div>
+        <div class="spotify-card">
+          <div class="s-art">🎵</div>
+          <div class="s-info">
+            <div class="s-track" id="sTrack">Starboy</div>
+            <div class="s-artist" id="sArtist">The Weeknd, Daft Punk</div>
+            <div class="s-prog">
+              <div class="s-bar"><div class="s-fill"></div></div>
+              <div class="s-time" id="sTime">03:50</div>
+            </div>
+          </div>
+          <div class="wave">
+            <div class="wb"></div><div class="wb"></div><div class="wb"></div><div class="wb"></div><div class="wb"></div>
+          </div>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#1db954" style="margin-left:6px;flex-shrink:0"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- WORK -->
+    <div class="section" id="section-work">
+      <div class="sec-eyebrow">// experience</div>
+      <div class="sec-h">Work Experience</div>
+      <div class="sec-sub">Where I've been building.</div>
+      <div class="work-list">
+        <div class="work-card">
+          <div class="work-logo">🏢</div>
+          <div style="flex:1">
+            <div class="work-role">Java Full Stack Engineering Intern</div>
+            <div class="work-meta"><span>Cognizant Technology Solutions</span><span>·</span><span>Jan 2025 – Present</span><span>·</span><span>Pune</span></div>
+            <div class="work-desc">Building enterprise mutual fund investment platform features. SIP mandate management, Jasmine/Karma unit tests, Spring Boot microservices, and Angular frontend integration.</div>
+            <div class="tags"><span class="tag">Java 21</span><span class="tag">Spring Boot</span><span class="tag">Angular</span><span class="tag">TypeScript</span><span class="tag">Microservices</span><span class="tag">Jasmine</span><span class="tag">MySQL</span></div>
+          </div>
+        </div>
+        <div class="work-card">
+          <div class="work-logo">🏆</div>
+          <div style="flex:1">
+            <div class="work-role">Smart India Hackathon — National Finalist</div>
+            <div class="work-meta"><span>Ministry of Education, Govt. of India</span><span>·</span><span>Dec 2024</span></div>
+            <div class="work-desc">Selected from thousands of teams. Led backend architecture for a government ministry solution in a 36-hour national sprint.</div>
+            <div class="tags"><span class="tag">Spring Boot</span><span class="tag">System Design</span><span class="tag">Team Lead</span></div>
+          </div>
+        </div>
+        <div class="work-card">
+          <div class="work-logo">⚙️</div>
+          <div style="flex:1">
+            <div class="work-role">Co-Leader — Hack-Sphere</div>
+            <div class="work-meta"><span>JSPM RSCOE, Pune</span><span>·</span><span>2024</span></div>
+            <div class="work-desc">Managed corporate partnership track, coordinated with industry partners and student teams across multiple problem domains.</div>
+            <div class="tags"><span class="tag">Leadership</span><span class="tag">Event Management</span><span class="tag">Industry Liaison</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STACK -->
+    <div class="section" id="section-stack">
+      <div class="sec-eyebrow">// arsenal</div>
+      <div class="sec-h">Tech Stack</div>
+      <div class="sec-sub">Tools I work with — daily, weekly, and when the job calls for it.</div>
+      <div class="stack-block"><div class="stack-cat">Backend Engine</div><div class="stack-pills"><div class="s-pill"><div class="s-pill-dot"></div>Java 21</div><div class="s-pill"><div class="s-pill-dot"></div>Spring Boot</div><div class="s-pill"><div class="s-pill-dot"></div>Spring AI</div><div class="s-pill"><div class="s-pill-dot"></div>Microservices</div><div class="s-pill"><div class="s-pill-dot"></div>REST APIs</div><div class="s-pill"><div class="s-pill-dot"></div>C++</div></div></div>
+      <div class="stack-block"><div class="stack-cat">Frontend Core</div><div class="stack-pills"><div class="s-pill"><div class="s-pill-dot"></div>Angular</div><div class="s-pill"><div class="s-pill-dot"></div>TypeScript</div><div class="s-pill"><div class="s-pill-dot"></div>React</div><div class="s-pill"><div class="s-pill-dot"></div>JavaScript</div><div class="s-pill"><div class="s-pill-dot"></div>HTML5 / CSS3</div><div class="s-pill"><div class="s-pill-dot"></div>Tailwind CSS</div></div></div>
+      <div class="stack-block"><div class="stack-cat">Data Layer</div><div class="stack-pills"><div class="s-pill"><div class="s-pill-dot"></div>MySQL</div><div class="s-pill"><div class="s-pill-dot"></div>MongoDB</div><div class="s-pill"><div class="s-pill-dot"></div>pgvector</div><div class="s-pill"><div class="s-pill-dot"></div>Relational Design</div></div></div>
+      <div class="stack-block"><div class="stack-cat">Cloud & Infra</div><div class="stack-pills"><div class="s-pill"><div class="s-pill-dot"></div>Microsoft Azure</div><div class="s-pill"><div class="s-pill-dot"></div>AWS</div><div class="s-pill"><div class="s-pill-dot"></div>Docker</div><div class="s-pill"><div class="s-pill-dot"></div>Git</div><div class="s-pill"><div class="s-pill-dot"></div>Linux</div><div class="s-pill"><div class="s-pill-dot"></div>Postman</div></div></div>
+      <div class="stack-block"><div class="stack-cat">AI & Emerging</div><div class="stack-pills"><div class="s-pill"><div class="s-pill-dot"></div>Gemini API</div><div class="s-pill"><div class="s-pill-dot"></div>Spring AI</div><div class="s-pill"><div class="s-pill-dot"></div>WebSockets</div><div class="s-pill"><div class="s-pill-dot"></div>Jasmine / Karma</div></div></div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="section" id="section-projects">
+      <div class="sec-eyebrow">// proof of work</div>
+      <div class="sec-h">Projects</div>
+      <div class="sec-sub">Things I've shipped — from AI assistants to legal platforms.</div>
+      <div class="projects-list">
+        <div class="proj-card">
+          <div class="proj-header"><div><div class="proj-num">01 · FEATURED</div><div class="proj-name">⚡ Aegis-AI — Personal AI Assistant</div></div><div style="display:flex;gap:6px;flex-shrink:0"><span style="font-size:10px;background:var(--accent-bg);color:var(--accent);border:1px solid var(--accent-border);border-radius:4px;padding:2px 8px;font-family:'Fira Code',monospace;">Active</span></div></div>
+          <div class="proj-desc">Personal Jarvis-style AI assistant on Java 21 & Spring AI with a two-brain architecture — lightweight local processing + Gemini cloud reasoning. Features WebSocket voice pipeline, proactive heartbeat loops, and three-tier pgvector memory system.</div>
+          <div class="proj-tags"><span class="proj-tag">Java 21</span><span class="proj-tag">Spring AI</span><span class="proj-tag">Gemini API</span><span class="proj-tag">pgvector</span><span class="proj-tag">WebSocket</span><span class="proj-tag">MySQL</span></div>
+          <div class="proj-btns"><a class="proj-btn pb-code" href="https://github.com/Varadpawar19/Varadpawar19-personal-assistant-project" target="_blank">Source Code</a><a class="proj-btn pb-live" href="#">Live Demo</a></div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-header"><div><div class="proj-num">02 · MICROSERVICES</div><div class="proj-name">⚖️ JusticeServe — Legal Case Platform</div></div></div>
+          <div class="proj-desc">Legal case management system decomposed into event-driven microservices solving multi-party coordination and document lifecycle complexity. Containerized and deployed on Azure with full CI/CD pipeline.</div>
+          <div class="proj-tags"><span class="proj-tag">Spring Boot</span><span class="proj-tag">Microservices</span><span class="proj-tag">Azure</span><span class="proj-tag">Docker</span><span class="proj-tag">MySQL</span><span class="proj-tag">REST</span></div>
+          <div class="proj-btns"><a class="proj-btn pb-code" href="https://github.com/Varadpawar19/JusticeServe" target="_blank">Source Code</a><a class="proj-btn pb-live" href="#">Live Demo</a></div>
+        </div>
+        <!-- <div class="proj-card">
+          <div class="proj-header"><div><div class="proj-num">03 · FULL STACK</div><div class="proj-name">🐾 PawClub — Pet Services Marketplace</div></div></div>
+          <div class="proj-desc">Premium dog services & e-commerce marketplace in React + TypeScript featuring role-based auth, multi-step booking flows, cart state management, and mobile-first UX with full e-commerce lifecycle support.</div>
+          <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">TypeScript</span><span class="proj-tag">Node.js</span><span class="proj-tag">MongoDB</span><span class="proj-tag">Tailwind CSS</span></div>
+          <div class="proj-btns"><a class="proj-btn pb-code" href="https://github.com/Varadpawar19/PawClub" target="_blank">Source Code</a><a class="proj-btn pb-live" href="#">Live Demo</a></div>
+        </div> -->
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section" id="section-education">
+      <div class="sec-eyebrow">// background</div>
+      <div class="sec-h">Education</div>
+      <div class="sec-sub">The foundation that shapes how I think about systems.</div>
+      <div class="edu-list">
+        <div class="edu-card">
+          <div class="edu-logo">🎓</div>
+          <div style="flex:1">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px">
+              <div>
+                <div class="edu-school">JSPM's Rajarshi Shahu College of Engineering</div>
+                <div class="edu-degree">B.Tech — Computer Science and Business Systems (CSBS)</div>
+                <div class="edu-meta">Pune · Savitribai Phule Pune University · Final Year</div>
+              </div>
+              <div class="edu-badge">2022 – 2026</div>
+            </div>
+          </div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-logo">📘</div>
+          <div style="flex:1">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px">
+              <div>
+                <div class="edu-school">Higher Secondary Certificate (HSC)</div>
+                <div class="edu-degree">Science — PCM with Computer Science</div>
+                <div class="edu-meta">Maharashtra State Board</div>
+              </div>
+              <div class="edu-badge">2022</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="divider">
+      <div class="sec-eyebrow">// certifications</div>
+      <div class="sec-h" style="font-size:18px;margin-bottom:16px">Certifications</div>
+      <div class="work-list">
+        <div class="work-card" style="padding:14px 18px">
+          <div class="work-logo" style="width:36px;height:36px;font-size:15px">☁️</div>
+          <div style="flex:1"><div class="work-role" style="font-size:13px">Microsoft Azure Fundamentals (AZ-900)</div><div class="work-meta">Microsoft · 2024</div></div>
+        </div>
+        <div class="work-card" style="padding:14px 18px">
+          <div class="work-logo" style="width:36px;height:36px;font-size:15px">🤖</div>
+          <div style="flex:1"><div class="work-role" style="font-size:13px">Generative AI & Prompt Engineering</div><div class="work-meta">Cognizant Internal · 2025</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="section" id="section-about">
+      <div class="sec-eyebrow">// the human behind the code</div>
+      <div class="sec-h">About Me</div>
+      <div class="sec-sub">A bit more context on who I am and what drives me.</div>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-card-t">👋 Hey there</div>
+          <div class="about-card-txt">I'm Varad Pawar, a final-year CS student from Pune building ambitious software. I care deeply about system design, clean abstractions, and shipping things that actually work at scale.</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-t">🎯 What I'm targeting</div>
+          <div class="about-card-txt">Full-time or part-time roles as a Full Stack or Full Stack AI Engineer post-graduation (2026). Interested in distributed systems, AI-integrated backends, and developer tooling.</div>
+        </div>
+        <div class="about-card" style="grid-column:span 2">
+          <div class="about-card-t">🏆 Milestones</div>
+          <div class="achiev-row"><div class="achiev-dot"></div><div class="achiev-txt"><strong>Smart India Hackathon 2024 Finalist</strong> — Selected nationally by Ministry of Education, Govt. of India</div></div>
+          <div class="achiev-row"><div class="achiev-dot"></div><div class="achiev-txt"><strong>Hack-Sphere Industry Track Organizer</strong> — Led corporate track at JSPM RSCOE internal hackathon</div></div>
+          <div class="achiev-row"><div class="achiev-dot"></div><div class="achiev-txt"><strong>Cognizant GenC Offer</strong> — Selected for Java Full Stack internship through campus placement</div></div>
+          <div class="achiev-row"><div class="achiev-dot"></div><div class="achiev-txt"><strong>Aegis-AI</strong> — Building a production-grade personal AI assistant inspired by Jarvis on Gemini free tier</div></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <p>Designed & Developed by Varad</p>
+  <p>© 2026 Varad Pawar.</p>
+</footer>
+
+</div>
+
+<script>
+const SECS=['home','work','stack','projects','education','about'];
+function showSection(id){
+  SECS.forEach(s=>{
+    document.getElementById('section-'+s).classList.remove('active');
+    const n=document.getElementById('nav-'+s);
+    if(n)n.classList.remove('active');
+  });
+  document.getElementById('section-'+id).classList.add('active');
+  const a=document.getElementById('nav-'+id);
+  if(a)a.classList.add('active');
+}
+function setTheme(t){
+  document.body.setAttribute('data-theme',t);
+  document.querySelectorAll('.theme-dot').forEach(d=>d.classList.remove('active'));
+  document.getElementById('td-'+t).classList.add('active');
+}
+function openCmd(){
+  document.getElementById('cmdOverlay').classList.add('open');
+  setTimeout(()=>document.getElementById('cmdInput').focus(),50);
+}
+function closeCmd(){document.getElementById('cmdOverlay').classList.remove('open');}
+document.addEventListener('keydown',e=>{
+  if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();openCmd();}
+  if(e.key==='Escape')closeCmd();
+});
+const tracks=[
+  {n:'Starboy',a:'The Weeknd, Daft Punk',t:'03:50'},
+  {n:'Blinding Lights',a:'The Weeknd',t:'03:20'},
+  {n:'Levitating',a:'Dua Lipa',t:'03:23'},
+  {n:'As It Was',a:'Harry Styles',t:'02:47'},
+  {n:'Golden Hour',a:'JVKE',t:'03:29'},
+  {n:'Cruel Summer',a:'Taylor Swift',t:'02:58'},
+];
+let ti=0;
+setInterval(()=>{
+  ti=(ti+1)%tracks.length;
+  const tr=document.getElementById('sTrack'),ar=document.getElementById('sArtist'),tm=document.getElementById('sTime');
+  if(!tr)return;
+  tr.style.opacity='0';ar.style.opacity='0';
+  setTimeout(()=>{
+    tr.textContent=tracks[ti].n;ar.textContent=tracks[ti].a;tm.textContent=tracks[ti].t;
+    tr.style.transition='opacity .4s';ar.style.transition='opacity .4s';
+    tr.style.opacity='1';ar.style.opacity='1';
+  },300);
+},6000);
+document.body.setAttribute('data-theme','light');
+</script>
