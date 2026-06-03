@@ -1,6 +1,6 @@
 <title>Varad Pawar | Portfolio</title>
 
-<link rel="icon" type=""image/svg+xml"  href="https://i.ibb.co/27Jn24wj/simple.jpg">
+<link rel="icon" type=""image/jpg"  href="https://i.ibb.co/27Jn24wj/simple.jpg">
 <style>
   
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Outfit:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap');
@@ -202,8 +202,13 @@ body{
 
 /* ===== MAIN CONTENT ===== */
 .main-content{min-width:0;}
-.section{display:none;}
-.section.active{display:block;}
+.section{
+  display:block;
+  margin-bottom:70px;
+}
+html{
+  scroll-behavior:smooth;
+}
 
 /* ===== HOME HERO ===== */
 .hero-section{margin-bottom:36px;}
@@ -390,12 +395,12 @@ body{
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-logo-btn" id="navLogoBtn" onclick="showSection('home')" title="Go home">VP</div>
-  <button class="nav-link active" id="nav-home" onclick="showSection('home')">Home</button>
-  <button class="nav-link" id="nav-work" onclick="showSection('work')">Work</button>
-  <button class="nav-link" id="nav-stack" onclick="showSection('stack')">Stack</button>
-  <button class="nav-link" id="nav-projects" onclick="showSection('projects')">Projects</button>
-  <button class="nav-link" id="nav-education" onclick="showSection('education')">Education</button>
-  <button class="nav-link" id="nav-about" onclick="showSection('about')">About</button>
+  <a href="#home" class="nav-link active">Home</a>
+  <a href="#work" class="nav-link">Work</a>
+  <a href="#stack" class="nav-link">Stack</a>
+  <a href="#projects" class="nav-link">Projects</a>
+  <a href="#education" class="nav-link">Education</a>
+  <a href="#about" class="nav-link">About</a>
   <div class="nav-spacer"></div>
   <div class="theme-bar">
     <div class="theme-dot td-light active" id="td-light" onclick="setTheme('light')" title="Light"></div>
@@ -504,7 +509,7 @@ body{
   <main class="main-content">
 
     <!-- HOME -->
-    <div class="section active" id="section-home">
+    <div class="section active" id="home">
       <div class="hero-section">
         <h1 class="hero-big">Hi, I'm Varad —<br><em>Software Development</em><br>Engineer.</h1>
         <p class="hero-subtext">
@@ -596,7 +601,7 @@ body{
     </div> -->
 
     <!-- WORK -->
-    <div class="section" id="section-work">
+    <div class="section" id="work">
       <div class="sec-eyebrow">// experience</div>
       <div class="sec-h">Work Experience</div>
       <div class="sec-sub">Where I've been building.</div>
@@ -632,7 +637,7 @@ body{
     </div>
 
     <!-- STACK -->
-    <div class="section" id="section-stack">
+    <div class="section" id="stack">
       <div class="sec-eyebrow">// arsenal</div>
       <div class="sec-h">Tech Stack</div>
       <div class="sec-sub">Tools I work with — daily, weekly, and when the job calls for it.</div>
@@ -644,7 +649,7 @@ body{
     </div>
 
     <!-- PROJECTS -->
-    <div class="section" id="section-projects">
+    <div class="section" id="projects">
       <div class="sec-eyebrow">// proof of work</div>
       <div class="sec-h">Projects</div>
       <div class="sec-sub">Things I've shipped — from AI assistants to legal platforms.</div>
@@ -671,7 +676,7 @@ body{
     </div>
 
     <!-- EDUCATION -->
-    <div class="section" id="section-education">
+    <div class="section" id="education">
       <div class="sec-eyebrow">// background</div>
       <div class="sec-h">Education</div>
       <div class="sec-sub">The foundation that shapes how I think about systems.</div>
@@ -719,7 +724,7 @@ body{
     </div>
 
     <!-- ABOUT -->
-    <div class="section" id="section-about">
+    <div class="section" id="about">
       <div class="sec-eyebrow">// the human behind the code</div>
       <div class="sec-h">About Me</div>
       <div class="sec-sub">A bit more context on who I am and what drives me.</div>
@@ -753,7 +758,7 @@ body{
 </div>
 
 <script>
-const SECS=['home','work','stack','projects','education','about'];
+/*const SECS=['home','work','stack','projects','education','about'];
 function showSection(id){
   SECS.forEach(s=>{
     document.getElementById('section-'+s).classList.remove('active');
@@ -763,7 +768,7 @@ function showSection(id){
   document.getElementById('section-'+id).classList.add('active');
   const a=document.getElementById('nav-'+id);
   if(a)a.classList.add('active');
-}
+} */
 function setTheme(t){
   document.body.setAttribute('data-theme',t);
   document.querySelectorAll('.theme-dot').forEach(d=>d.classList.remove('active'));
